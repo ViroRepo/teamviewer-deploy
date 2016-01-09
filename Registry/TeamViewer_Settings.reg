@@ -22,8 +22,8 @@ Windows Registry Editor Version 5.00
 "WhitelistCompany"=hex(7):00,00
 "BlacklistBuddyAccountID"=hex(3):88,44,d7,0a,b2,96,2a,3d,63,16,3c,ff,e4,15,04,fb
 "WhitelistBuddyAccountID"=hex(3):88,44,d7,0a,b2,96,2a,3d,63,16,3c,ff,e4,15,04,fb
-"BlacklistCompanyID"=hex(3):00,76,bd,5f,c2,99,c6,bd,2f,31,8a,fa,d3,23,61,d2,3b,3f,56,db,80,e9,b5,86,49,78,f7,ff,e3,04,cb,4f
-"WhitelistCompanyID"=hex(3):38,c9,08,fb,1e,a0,45,31,24,77,f6,be,52,c0,0f,40,93,d2,0c,16,a0,71,d9,0a,5d,29,a0,19,c8,ba,42,13
+"BlacklistCompanyID"=hex(3):6d,22,a8,87,04,1a,23,13,09,ad,9e,ac,0e,e4,72,bb,17,4c,c5,f1,a7,d3,1f,e5,a0,03,1f,62,db,19,94,fa
+"WhitelistCompanyID"=hex(3):45,4a,f4,c1,72,3d,80,28,7d,f4,9f,06,55,cf,5f,7c,9a,a9,06,02,b9,66,b2,09,78,79,83,42,a2,70,dc,43
 "UseWhitelist"=dword:00000000
 "RemoteMonitoring_Activated"=dword:00000000
 "Security_Disableshutdown"=dword:00000001
