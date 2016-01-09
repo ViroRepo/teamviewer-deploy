@@ -25,7 +25,6 @@ wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Ba
 start "New Window" cmd /c 64clean.bat
 wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/32clean.bat --no-check-certificate --no-proxy
 start "New Window" cmd /c 32clean.bat
-pause
 Goto StopServices
 
 :32RegClean
