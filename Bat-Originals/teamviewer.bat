@@ -7,11 +7,11 @@ set CPUtype=xxx
 for /f "skip=1 delims=" %%x in ('wmic cpu get addresswidth') do if not defined AddressWidth set AddressWidth=%%x
 
 if %AddressWidth%==64 (
-  wget wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
+  wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
 	set CPUtype=x64
 	GOTO 64RegClean
 )	else	(
-	wget wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
+	wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
 	set CPUtype=x86
   GOTO 32RegClean
 )
@@ -20,14 +20,15 @@ GOTO End
 
 :64RegClean
 wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/64clean.bat --no-check-certificate --no-proxy
-64clean.exe
+start "New Window" cmd /c 64clean.bat
 wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/32clean.bat --no-check-certificate --no-proxy
-32clean.exe
+start "New Window" cmd /c 32clean.bat
+pause
 Goto StopServices
 
 :32RegClean
 wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/32clean.bat --no-check-certificate --no-proxy
-32clean.exe
+start "New Window" cmd /c 32clean.bat
 Goto StopServices
 
 :StopServices
@@ -41,5 +42,4 @@ start /wait MSIEXEC.EXE /i TeamViewer_Host-idckg6ker6.msi /qn
 Goto EXIT
 
 :EXIT
-pause
 exit
