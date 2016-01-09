@@ -7,11 +7,11 @@ set CPUtype=xxx
 for /f "skip=1 delims=" %%x in ('wmic cpu get addresswidth') do if not defined AddressWidth set AddressWidth=%%x
 
 if %AddressWidth%==64 (
-  wget http://www.r99.com.au/teamviewer/TeamViewer_Host-idckg6ker6.msi
+  wget wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
 	set CPUtype=x64
 	GOTO 64RegClean
 )	else	(
-	wget http://www.r99.com.au/teamviewer/TeamViewer_Host-idckg6ker6.msi
+	wget wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
 	set CPUtype=x86
   GOTO 32RegClean
 )
@@ -19,14 +19,14 @@ GOTO End
 
 
 :64RegClean
-wget http://www.r99.com.au/teamviewer/64clean.exe
+wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/64clean.bat --no-check-certificate --no-proxy
 64clean.exe
-wget http://www.r99.com.au/teamviewer/32clean.exe
+wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/32clean.bat --no-check-certificate --no-proxy
 32clean.exe
 Goto StopServices
 
 :32RegClean
-wget http://www.r99.com.au/teamviewer/32clean.exe
+wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Bat-Originals/32clean.bat --no-check-certificate --no-proxy
 32clean.exe
 Goto StopServices
 
