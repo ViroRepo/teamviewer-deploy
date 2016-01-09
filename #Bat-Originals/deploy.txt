@@ -1,0 +1,53 @@
+@ECHO off
+
+::Defines
+set CPUtype=xxx
+
+:ARCHcheck
+for /f "skip=1 delims=" %%x in ('wmic cpu get addresswidth') do if not defined AddressWidth set AddressWidth=%%x
+
+if %AddressWidth%==64 (
+  wget http://www.r99.com.au/eea_nt64_enu.msi
+	set CPUtype=x64
+	GOTO 64RegClean
+)	else	(
+	wget http://www.r99.com.au/eea_nt32_enu.msi
+	set CPUtype=x86
+  GOTO 32RegClean
+)
+GOTO End
+
+
+:64RegClean
+wget http://www.r99.com.au/res/64regclean.exe
+64regclean.exe
+wget http://www.r99.com.au/res/32regclean.exe
+32regclean.exe
+Goto Install
+
+:32RegClean
+wget http://www.r99.com.au/res/32regclean.exe
+32regclean.exe
+Goto Install
+
+:Install
+CLS
+"SmartInstaller,PROD=EEA,LONGPROD=ESET Endpoint Antivirus,ERAFQDN=support.onsite2u.com.au,PROFILE=DEFAULT,GROUP=ALL,INSTALL_CONFLICTS=1.exe"
+Goto CLEANUP
+
+:CLEANUP
+If %CPUtype%==x64 (
+	del eea_nt64_enu.msi
+	del 32regclean.exe /F /Q
+	del 64regclean.exe /F /Q
+	del "SmartInstaller,PROD=EEA,LONGPROD=ESET Endpoint Antivirus,ERAFQDN=support.onsite2u.com.au,PROFILE=DEFAULT,GROUP=ALL,INSTALL_CONFLICTS=1.exe" /F /Q
+)	else	(
+	del 32regclean.exe /F /Q
+	del "SmartInstaller,PROD=EEA,LONGPROD=ESET Endpoint Antivirus,ERAFQDN=support.onsite2u.com.au,PROFILE=DEFAULT,GROUP=ALL,INSTALL_CONFLICTS=1.exe" /F /Q
+	del eea_nt32_enu.msi /F /Q
+)
+goto EXIT
+
+
+:EXIT
+exit
