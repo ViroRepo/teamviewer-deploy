@@ -8,10 +8,12 @@ for /f "skip=1 delims=" %%x in ('wmic cpu get addresswidth') do if not defined A
 
 if %AddressWidth%==64 (
   wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
+  wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Registry/TeamViewer_Settings.reg --no-check-certificate --no-proxy
 	set CPUtype=x64
 	GOTO 64RegClean
 )	else	(
 	wget -w 3 https://github.com/ViroRepo/teamviewer-deploy/raw/master/Exe-Originals/TeamViewer_Host-idckg6ker6.msi --no-check-certificate --no-proxy
+	wget -w 3 https://raw.githubusercontent.com/ViroRepo/teamviewer-deploy/master/Registry/TeamViewer_Settings.reg --no-check-certificate --no-proxy
 	set CPUtype=x86
   GOTO 32RegClean
 )
